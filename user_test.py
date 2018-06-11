@@ -13,7 +13,7 @@ class TestUser(unittest.TestCase):
         '''
         set up method to run before each test cases.
         '''
-        self.new_user = User("Elvis","Elvizy1")
+        self.new_user = User("Elvis","elvisamuni22@gmail.com","Elvizy254")
 
     def test_init(self):
         '''
@@ -21,7 +21,16 @@ class TestUser(unittest.TestCase):
         '''
 
         self.assertEqual(self.new_user.user_name,"Elvis")
-        self.assertEqual(self.new_user.password,"Elvizy1")
+        self.assertEqual(self.new_user.email,"elvisamuni22@gmail.com")
+        self.assertEqual(self.new_user.password,"Elvizy254")
+
+    def test_save_user(self):
+        '''
+        test_save_user method to save a user
+        '''
+        self.new_user.save_user()
+        self.assertEqual(len(User.user_list),1)
+
 
 if __name__ == '__main__':
     unittest.main()
