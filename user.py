@@ -27,5 +27,7 @@ class User:
         """
         method to display a user
         """
-        def display_user(cls):
-            for user in
+        def display_user(cls, user_name):
+            for user in cls.user_list:
+                if user_name = user_name:
+                    return user
