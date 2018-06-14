@@ -45,7 +45,7 @@ class TestUser(unittest.TestCase):
         test_user = User("Elvis","elvisamuni22@gmail.com","password")
         test_user.save_user()
 
-        found_user = User.user_exists("user_name")
+        found_user = User.search_user_exists("user_name")
 
         self.assertEqual(found_user.user_name,test_user.user_name)
 

@@ -24,11 +24,10 @@ class User:
         User.user_list.append(self)
 
     @classmethod
-    def user_exists(cls, user_name):
+    def search_user_exists(cls, user_name):
         """
         method to check is a user exists
         """
         for user in cls.user_list:
             if user_name == user_name:
                 return user
-            
