@@ -21,7 +21,22 @@ def user_exists(user_name):
     '''
     return User.user_exists(user_name)
 
-def copy_password(account_name):
+def create_profile(user_name, password):
+    """
+    Function to create new_profile
+    """
+    new_profile = Passwords(user_name, password)
+    return new_profile
+
+
+def save_profile(profile):
+    """
+    Function to save profile
+    """
+    profile.save_profile()
+
+
+def copy_password(user_name):
     '''
     Function that allows us to copy a password from their account_name
     '''
@@ -43,9 +58,9 @@ def main():
     while True:
         short_code = input().lower()
         print('_'*100)
-        if short_code == "cn":
+        if short_code == "new":
             print("New Password Locker Account")
-            print("_" * 20)
+            print("__" * 20)
 
             print("Enter a preferred user name")
             user_name = input()
@@ -54,10 +69,15 @@ def main():
             print("""Use these short codes:
                     gen-To generate a password
                     make-To make a password on your own""")
-            security_code = input().lower()
+            code = input().lower()
             print("__" * 20)
-            if security_code == "g":
+            if code == "gen":
                 password_length = int(input("How many characters do you wish your password should have"))
 
                 password = password_gen(password_length)
-                print("")
+                print(f"Your password is {password}")
+            else:
+                print("write a password of your own")
+                password = input()
+
+        save_user(create_profile(user_name,password))
