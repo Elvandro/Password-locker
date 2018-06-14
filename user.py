@@ -4,17 +4,15 @@ class User:
     """
     user_list = []
 
-    def __init__(self, user_name, email, password):
+    def __init__(self, user_name, password):
 
         """
         __init__ method helps us define our object
         Args:
             user_name: New user name.
-            email: New user email.
             password: New user password.
         """
         self.user_name = user_name
-        self.email = email
         self.password = password
 
     def save_user(self):

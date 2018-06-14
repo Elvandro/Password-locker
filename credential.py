@@ -32,4 +32,11 @@ class Credential:
 
         for credential in cls.credential_list:
             if credential.user_name == user_name:
-                return credential    
+                return credential
+    
+    @classmethod
+    def password_gen(cls, password_length):
+        string = "abcdefghigjkmnopqrstuvwxyz1234567890-_=+{}\|"';>./,`!@#$^&*()`'
+        password = "".join(random.sample(string, int(password_length)))
+        credential_passsword = password
+        return credential_passsword

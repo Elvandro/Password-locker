@@ -29,21 +29,15 @@ def create_profile(user_name, password):
     return new_profile
 
 
-def save_profile(profile):
+def save_profile(credential):
     """
     Function to save profile
     """
-    profile.save_profile()
+    credential.save_profile()
 
-
-def copy_password(user_name):
-    '''
-    Function that allows us to copy a password from their account_name
-    '''
-    return Passwords.copy_password()
 
 def password_gen(password_length):
-    return Passwords.password_gen(password_length)
+    return Password.password_gen(password_length)
 
 def main():
     print("Hello! Welcome to Password Locker. What is your name?")
@@ -81,3 +75,9 @@ def main():
                 password = input()
 
         save_user(create_profile(user_name,password))
+        
+    print("You successfully created your new account")
+    print("You can now create your password profiles")
+
+if __name__ == '__main__':
+    main()
