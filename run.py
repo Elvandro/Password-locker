@@ -1,6 +1,7 @@
 from user import User
 from credential import Credential
 import random
+import string
 
 def create_user(user_name, password):
     '''
@@ -13,7 +14,7 @@ def save_user(user):
     '''
     will save new_users
     '''
-    User.save_user()
+    user.save_user()
 
 def user_exists(user_name):
     '''
@@ -21,41 +22,52 @@ def user_exists(user_name):
     '''
     return User.user_exists(user_name)
 
-def create_profile(user_name, password):
+def create_credential(account_name, password):
     """
-    Function to create new_profile
+    Function to save new_profile
     """
-    new_profile = Passwords(user_name, password)
+    new_profile = Credential(account_name, password)
     return new_profile
 
-
-def save_profile(credential):
+def save_credential(credential):
     """
-    Function to save profile
+    Will save a user credentials
     """
-    credential.save_profile()
+    credential.save_credential
 
+def password_generator():
+    """
+    A function that generates a random password
+    """
+    chars = string.ascii_uppercase + string.ascii_lowercase + string.digits
+    size = random.randint(6,20)
+    password = "".join(random.choice(chars) for character in range(size))
 
-def password_gen(password_length):
-    return password_length.password_gen(password_length)
+    return password
+
+def display_credential():
+    """
+    Function to use credentials
+    """
+    return Credential.display_credential()
+
+def delete_credential(credential):
+    """
+    delete a credential
+    """
+    Credential.delete_credential()
 
 def main():
     print("Hello! Welcome to Password Locker. What is your name?")
     name = input()
-    print("")
 
-    print(f"Hi {name}, would you like to create a new account or log in to your already existing account?")
-    print(""" Use these short codes:
-            new - to create a new account
-            sign - to log in to your already existing account
-            """)
+    print(f"Hi {name},Type new to create a new password locker account")
+
     while True:
         short_code = input().lower()
-        print('_'*100)
         if short_code == "new":
+            print('__'*25)
             print("New Password Locker Account")
-            print("__" * 20)
-
             print("Enter a preferred user name")
             user_name = input()
 
@@ -64,20 +76,63 @@ def main():
                     gen-To generate a password
                     make-To make a password on your own""")
             code = input().lower()
-            print("__" * 20)
-            if code == "gen":
-                password_length = int(input("How many characters do you wish your password should have"))
+            print("__" * 25)
 
-                password = password_gen(password_length)
-                print(f"Your password is {password}")
-            else:
+            if code =="make":
                 print("write a password of your own")
                 password = input()
+            elif code == "gen":
+                password = password_generator()
+                print(f"Your password is {password}")
+                break
+            else:
+                print("Please type make or gen")
+                break
+        save_user(create_user(user_name,password))
+        break
 
-        save_user(create_profile(user_name,password))
-
+    print(f"User-{user_name}, password-{password}")
     print("You successfully created your new account")
-    print("You can now create your password profiles")
+    print("__" * 25)
+
+    print("You can now create and view password locker accounts")
+    while True:
+            print("""Type one of these short codes:
+                  np - create password credential
+                  dp - display password locker credentials
+                  """)
+            short_codes = input().lower()
+            if short_codes == "np":
+                print("""Type in one of the short_codes,
+                write - make a password so that we can store it for you,
+                generate - we will randomize a password for you
+                """)
+                sec_code = input().lower()
+                if sec_code == "write":
+                    account_name = input()
+                    security_code = input()
+                elif sec_code == "generate":
+                    account_name = input()
+                    security_code = password_generator()
+                    print(f"Your password is {security_code}")
+                else:
+                    print("Use one of the short codes")
+                    save_credential(create_credential(account_name, password))
+                break
+            elif short_codes == "dp":
+                print("Enter an account name to search for credentials")
+                view = input().lower()
+                if view == account_name:
+                    for credential in display_credential():
+                        print(f"{account_name}, {security_code}")
+                else:
+                    print("The account not exist")
+                break
+            else:
+                print("Use one of the short codes as instructed")
+            break    
+    print("Thank you for visiting Password Locker. Come again. Ciao!" )
+
 
 if __name__ == '__main__':
     main()

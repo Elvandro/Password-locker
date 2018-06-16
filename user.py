@@ -22,7 +22,7 @@ class User:
         User.user_list.append(self)
 
     @classmethod
-    def search_user_exists(cls, user_name):
+    def user_exists(cls, user_name):
         """
         method to check is a user exists
         """
