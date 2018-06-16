@@ -6,7 +6,10 @@ This is a simple Python application that generates and stores password for vario
 The application allows a user to create an account that stores passwords and other login information. A user can also generate passwords from the application.
 
 ## Specifications
-You create a password profile basically by typing new on the application shell. If you have an account already you can proceed to generating and saving your credentials.
+You create a new password locker account basically by typing new on the application shell.
+Type keyword gen to generate a password or make to write a password of your liking.
+To view an account's credentials type short code dp and np to create new credentials. 
+
 
 ## Setup/Installation Requirements
 * Clone the repository from git hub at 'https://github.com/Elvandro/Password-locker.git'

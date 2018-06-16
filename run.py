@@ -61,13 +61,14 @@ def main():
     print("Hello! Welcome to Password Locker. What is your name?")
     name = input()
 
-    print(f"Hi {name},Type new to create a new password locker account")
+    print(f"Hi {name}, Type new to create a new password locker account")
 
     while True:
         short_code = input().lower()
         if short_code == "new":
             print('__'*25)
             print("New Password Locker Account")
+            print ("\n")
             print("Enter a preferred user name")
             user_name = input()
 
@@ -76,8 +77,7 @@ def main():
                     gen-To generate a password
                     make-To make a password on your own""")
             code = input().lower()
-            print("__" * 25)
-
+            print ("\n")
             if code =="make":
                 print("write a password of your own")
                 password = input()
@@ -108,17 +108,26 @@ def main():
                 generate - we will randomize a password for you
                 """)
                 sec_code = input().lower()
+
                 if sec_code == "write":
+                    print("Enter a name of the account you wish to create")
                     account_name = input()
+                    print("Enter a password for the account")
                     security_code = input()
+
                 elif sec_code == "generate":
+                    print("Enter a name of the account you wish to create")
                     account_name = input()
                     security_code = password_generator()
-                    print(f"Your password is {security_code}")
+                    print(f"We have stored your credentials as account name - {account_name} and password - {security_code}")
+
                 else:
                     print("Use one of the short codes")
-                    save_credential(create_credential(account_name, password))
+                save_credential(create_credential(account_name, password))
                 break
+                print("You successfully created and stored your credentialst")
+                print("__" * 25)
+
             elif short_codes == "dp":
                 print("Enter an account name to search for credentials")
                 view = input().lower()
@@ -130,7 +139,8 @@ def main():
                 break
             else:
                 print("Use one of the short codes as instructed")
-            break    
+            break
+    print("__" * 25)
     print("Thank you for visiting Password Locker. Come again. Ciao!" )
 
 
